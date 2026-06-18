@@ -1,0 +1,1857 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Brigadeiros gourmet e tortas artesanais sofisticadas. Pedidos por agendamento.">
+    <meta name="theme-color" content="#C6A99B">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Chocofleur">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect fill='%23EFDAD3' width='192' height='192'/%3E%3Ctext x='50%25' y='50%25' font-family='serif' font-size='100' font-weight='bold' text-anchor='middle' dominant-baseline='middle' fill='%231E1E1E'%3E🍫%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect fill='%23EFDAD3' width='192' height='192' rx='45'/%3E%3Ctext x='50%25' y='50%25' font-family='serif' font-size='100' font-weight='bold' text-anchor='middle' dominant-baseline='middle' fill='%231E1E1E'%3E🍫%3C/text%3E%3C/svg%3E">
+    <title>Chocofleur Patisserie - Brigadeiros Gourmet e Tortas Artesanais</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ===== Variables ===== */
+        :root {
+            --primary-bg: #EFDAD3;
+            --accent: #C6A99B;
+            --dark: #1E1E1E;
+            --light: #FFFFFF;
+            --muted: #F5F0ED;
+            --border: #E5D9D0;
+            
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Lora', serif;
+            
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --spacing-2xl: 4rem;
+        }
+
+        /* Dark Mode */
+        html.dark-mode {
+            --primary-bg: #1E1E1E;
+            --accent: #A68B7E;
+            --dark: #EFDAD3;
+            --light: #2A2A2A;
+            --muted: #333333;
+            --border: #404040;
+        }
+
+        /* ===== Reset ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--dark);
+            background-color: var(--primary-bg);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* ===== Typography ===== */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* ===== Container ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        /* ===== Buttons ===== */
+        .btn {
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border: none;
+            border-radius: 0.5rem;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--light);
+        }
+
+        .btn-primary:hover {
+            background-color: #B39889;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--accent);
+            color: var(--light);
+        }
+
+        .btn-order {
+            background-color: var(--accent);
+            color: var(--light);
+            padding: var(--spacing-xs) var(--spacing-md);
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-order:hover {
+            background-color: #B39889;
+        }
+
+        /* ===== Header ===== */
+        header {
+            background-color: var(--primary-bg);
+            padding: var(--spacing-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 2px solid var(--accent);
+            color: var(--dark);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-body);
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--accent);
+            color: var(--light);
+        }
+
+        /* ===== Cart Button ===== */
+        .cart-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent);
+            color: var(--light);
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99;
+            transition: all 0.3s ease;
+        }
+
+        .cart-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #E74C3C;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* ===== Cart Modal ===== */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            align-items: flex-end;
+        }
+
+        .cart-modal.active {
+            display: flex;
+        }
+
+        .cart-content {
+            background-color: var(--light);
+            width: 100%;
+            max-width: 500px;
+            max-height: 80vh;
+            border-radius: 1.5rem 1.5rem 0 0;
+            padding: var(--spacing-lg);
+            overflow-y: auto;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-lg);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: var(--spacing-md);
+        }
+
+        .cart-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--dark);
+        }
+
+        .cart-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        .cart-items {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-md);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            margin-bottom: var(--spacing-md);
+            background-color: var(--primary-bg);
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: bold;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-price {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cart-item-btn {
+            background-color: var(--accent);
+            color: var(--light);
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+
+        .cart-item-btn:hover {
+            background-color: #B39889;
+        }
+
+        .cart-item-qty {
+            width: 40px;
+            text-align: center;
+            font-weight: bold;
+            color: var(--dark);
+        }
+
+        .cart-item-remove {
+            background-color: #E74C3C;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s ease;
+        }
+
+        .cart-item-remove:hover {
+            background-color: #C0392B;
+        }
+
+        .cart-item-observation {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            font-family: var(--font-body);
+            color: var(--dark);
+            margin-top: 0.5rem;
+            resize: vertical;
+            min-height: 60px;
+        }
+
+        .cart-item-observation::placeholder {
+            color: var(--muted);
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: var(--spacing-xl);
+            color: var(--dark);
+        }
+
+        .cart-summary {
+            border-top: 2px solid var(--border);
+            padding-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--dark);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .cart-total-value {
+            color: var(--accent);
+        }
+
+        .cart-actions {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        .btn-checkout {
+            flex: 1;
+            background-color: var(--accent);
+            color: var(--light);
+            padding: var(--spacing-md);
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-checkout:hover {
+            background-color: #B39889;
+            transform: translateY(-2px);
+        }
+
+        .btn-continue {
+            flex: 1;
+            background-color: transparent;
+            color: var(--accent);
+            padding: var(--spacing-md);
+            border: 2px solid var(--accent);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-continue:hover {
+            background-color: var(--accent);
+            color: var(--light);
+        }
+
+        /* ===== Hero Section ===== */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-bg) 0%, #F5E8E0 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-2xl) var(--spacing-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(198, 169, 155, 0.1);
+            border-radius: 50%;
+            filter: blur(60px);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(198, 169, 155, 0.05);
+            border-radius: 50%;
+            filter: blur(60px);
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            z-index: 1;
+        }
+
+        .logo-container {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .logo {
+            width: 150px;
+            height: 150px;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            color: var(--dark);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: var(--spacing-lg);
+            font-family: var(--font-body);
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: var(--spacing-2xl);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .hero-info {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        .hero-info p {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        /* ===== Menu Section ===== */
+        .menu {
+            background-color: var(--white);
+            padding: var(--spacing-2xl) var(--spacing-md);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .section-header h2 {
+            color: var(--dark);
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Menu Tabs */
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-2xl);
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border: 2px solid var(--border);
+            background-color: transparent;
+            color: var(--dark);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            background-color: var(--accent);
+            color: var(--light);
+            border-color: var(--accent);
+        }
+
+        .tab-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        /* Product Card */
+        .product-card {
+            background-color: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-card h3 {
+            padding: var(--spacing-md) var(--spacing-md) 0;
+            font-size: 1.2rem;
+            color: var(--dark);
+        }
+
+        .product-description {
+            padding: 0 var(--spacing-md);
+            font-size: 0.95rem;
+            color: #666;
+            flex-grow: 1;
+        }
+
+        .product-note {
+            padding: 0 var(--spacing-md);
+            font-size: 0.85rem;
+            color: #999;
+            font-style: italic;
+        }
+
+        .flavor-btn {
+            margin: var(--spacing-md) var(--spacing-md) 0;
+            background-color: transparent;
+            border: none;
+            color: var(--accent);
+            font-family: var(--font-body);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 0;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+
+        .flavor-btn:hover {
+            text-decoration: underline;
+        }
+
+        .product-footer {
+            padding: var(--spacing-md);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .menu-note {
+            text-align: center;
+            color: #999;
+            font-size: 0.9rem;
+            padding: var(--spacing-lg);
+            background-color: var(--muted);
+            border-radius: 0.5rem;
+        }
+
+        /* ===== About Section ===== */
+        .about {
+            background-color: var(--primary-bg);
+            padding: var(--spacing-2xl) var(--spacing-md);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-2xl);
+            align-items: center;
+        }
+
+        .about-text h2 {
+            color: var(--dark);
+        }
+
+        .about-text p {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .about-values {
+            display: grid;
+            gap: var(--spacing-lg);
+        }
+
+        .value-item {
+            background-color: var(--white);
+            padding: var(--spacing-lg);
+            border-radius: 0.75rem;
+            text-align: center;
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .value-item h3 {
+            color: var(--dark);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .value-item p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        /* ===== Contact Section ===== */
+        .contact {
+            background-color: var(--white);
+            padding: var(--spacing-2xl) var(--spacing-md);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .contact-card {
+            background-color: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: var(--spacing-lg);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent);
+        }
+
+        .contact-card h3 {
+            color: var(--dark);
+            margin-bottom: var(--spacing-md);
+            font-size: 1.3rem;
+        }
+
+        .contact-info {
+            font-size: 1.1rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-note {
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: var(--spacing-2xl) var(--spacing-md);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .footer-content h3,
+        .footer-content h4 {
+            color: var(--light);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-content p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: var(--spacing-lg);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* ===== Modal ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            border-radius: 1rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s ease;
+        }
+
+        .modal-small {
+            max-width: 400px;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            padding: var(--spacing-lg);
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        .modal-header h2 {
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.5rem;
+        }
+
+        .modal-header p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: var(--spacing-lg);
+            right: var(--spacing-lg);
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: var(--dark);
+        }
+
+        /* Flavors List */
+        .flavors-list {
+            padding: var(--spacing-lg);
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-md);
+        }
+
+        .flavor-item {
+            padding: var(--spacing-md);
+            background-color: var(--muted);
+            border-radius: 0.5rem;
+            font-size: 0.95rem;
+            color: #666;
+            text-align: center;
+        }
+
+        /* ===== Lightbox ===== */
+        .product-image {
+            cursor: pointer;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .product-image:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-content {
+            position: relative;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 0.5rem;
+            animation: slideUp 0.3s ease;
+        }
+
+        .lightbox-title {
+            color: var(--light);
+            margin-top: var(--spacing-lg);
+            font-size: 1.3rem;
+            text-align: center;
+            font-family: var(--font-display);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            z-index: 2001;
+        }
+
+        .lightbox-close:hover {
+            color: var(--accent);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--light);
+            border: none;
+            font-size: 2rem;
+            padding: var(--spacing-md);
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            z-index: 2001;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .lightbox-prev {
+            left: var(--spacing-md);
+        }
+
+        .lightbox-next {
+            right: var(--spacing-md);
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--light);
+            font-size: 0.95rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .lightbox-nav {
+                font-size: 1.5rem;
+                padding: var(--spacing-sm);
+            }
+
+            .lightbox-prev {
+                left: var(--spacing-sm);
+            }
+
+            .lightbox-next {
+                right: var(--spacing-sm);
+            }
+
+            .lightbox-close {
+                top: -35px;
+                font-size: 2rem;
+            }
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            :root {
+                --spacing-2xl: 2rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-tabs {
+                gap: var(--spacing-sm);
+            }
+
+            .tab-btn {
+                padding: var(--spacing-sm) var(--spacing-md);
+                font-size: 0.9rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            :root {
+                --spacing-md: 1rem;
+                --spacing-lg: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .logo {
+                width: 120px;
+                height: 120px;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .modal-content {
+                width: 95%;
+            }
+
+            .flavors-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Theme Toggle -->
+    <header>
+        <div class="header-title">🍫 Chocofleur</div>
+        <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+            <span id="themeIcon">🌙</span>
+            <span id="themeText">Modo Escuro</span>
+        </button>
+    </header>
+
+    <!-- Cart Button -->
+    <button class="cart-button" id="cartButton" onclick="toggleCart()">
+        🛒
+        <span class="cart-count" id="cartCount" style="display: none;">0</span>
+    </button>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <div class="cart-title">🛒 Seu Carrinho</div>
+                <button class="cart-close" onclick="closeCart()">✕</button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <div class="cart-empty">Seu carrinho está vazio</div>
+            </div>
+            <div class="cart-summary">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span class="cart-total-value" id="cartTotal">R$ 0,00</span>
+                </div>
+            </div>
+            <div class="cart-actions">
+                <button class="btn-continue" onclick="closeCart()">Continuar Comprando</button>
+                <button class="btn-checkout" onclick="checkoutCart()">Fazer Pedido</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="logo-container">
+                <img src="images/logo-chocofleur.png" alt="Chocofleur Patisserie" class="logo">
+            </div>
+            
+            <h1 class="hero-title">Chocofleur Patisserie</h1>
+            <p class="hero-subtitle">Brigadeiros Gourmet e Tortas Artesanais</p>
+            
+            <p class="hero-description">
+                Sofisticação e sabor em cada detalhe. Criações exclusivas para tornar seus momentos especiais ainda mais doces.
+            </p>
+            
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="openWhatsApp()">
+                    <span>📱</span> Fazer Pedido via WhatsApp
+                </button>
+                <button class="btn btn-secondary" onclick="scrollToMenu()">Ver Cardápio</button>
+            </div>
+            
+            <div class="hero-info">
+                <p>📍 Salgado Filho, 2044 | ⏰ 11h às 20h</p>
+                <p>Pedidos apenas por agendamento</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nosso Cardápio</h2>
+                <p>Descubra nossa seleção de brigadeiros gourmet, centos artesanais e tortas artesanais</p>
+            </div>
+
+            <!-- Menu Tabs -->
+            <div class="menu-tabs">
+                <button class="tab-btn active" onclick="switchTab('box30')">Box 30 Unidades</button>
+                <button class="tab-btn" onclick="switchTab('centos')">Centos</button>
+                <button class="tab-btn" onclick="switchTab('tortas')">Tortas</button>
+            </div>
+
+            <!-- Box 30 -->
+            <div id="box30" class="tab-content active">
+                <div class="products-grid">
+                    <div class="product-card">
+                        <img src="images/box-30-unidades-linha-clalssica.png" alt="Box 30 - Linha Clássica" class="product-image" onclick="openLightbox('images/box-30-unidades-linha-clalssica.png', 'Box 30 unidades - Linha Clássica')" style="width: 100%; height: 200px; object-fit: cover;">
+                        <h3>Box 30 unidades - Linha Clássica</h3>
+                        <p class="product-description">Box com 30 unidades de brigadeiros da linha clássica feita com chocolate belga e cobertura de granulado.</p>
+                        <button class="flavor-btn" onclick="openFlavorModal(['Chocolate', 'Brigadeiro Branco', 'Brigadeiro Negresco', 'Chocolate com Avelã', 'Brigadeiro de Doce de Leite'])">5 sabores disponíveis →</button>
+                        <div class="product-footer">
+                            <span class="price">R$ 79,00</span>
+                            <button class="btn-order" onclick="addToCart('Box 30 - Linha Clássica', 79.00)">+ Carrinho</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="images/box-30-unidades-linha-nobre.png" alt="Box 30 - Linha Nobre" class="product-image" onclick="openLightbox('images/box-30-unidades-linha-nobre.png', 'Box 30 unidades - Linha Nobre')" style="width: 100%; height: 200px; object-fit: cover;">
+                        <h3>Box 30 unidades - Linha Nobre</h3>
+                        <p class="product-description">Box com 30 unidades de brigadeiros da linha nobre com ingredientes premium e acabamento sofisticado.</p>
+                        <button class="flavor-btn" onclick="openFlavorModal(['Brigadeiro de Champagne', 'Brigadeiro de Pistache', 'Brigadeiro de Café Expresso', 'Brigadeiro de Frutas Vermelhas', 'Brigadeiro de Chocolate 70%'])">5 sabores disponíveis →</button>
+                        <div class="product-footer">
+                            <span class="price">R$ 117,00</span>
+                            <button class="btn-order" onclick="addToCart('Box 30 - Linha Nobre', 117.00)">+ Carrinho</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Centos -->
+            <div id="centos" class="tab-content">
+                <div class="products-grid">
+                    <div class="product-card">
+                        <img src="images/cento-linhaclassica.jpg" alt="Centos - Linha Clássica" class="product-image" onclick="openLightbox('images/cento-linhaclassica.jpg', 'Centos - Linha Clássica')" style="width: 100%; height: 200px; object-fit: cover;">
+                        <h3>Centos - Linha Clássica</h3>
+                        <p class="product-description">100 brigadeiros da linha clássica, perfeito para eventos e celebrações.</p>
+                        <button class="flavor-btn" onclick="openFlavorModal(['Chocolate', 'Brigadeiro Branco', 'Brigadeiro Negresco', 'Chocolate com Avelã', 'Brigadeiro de Doce de Leite', 'Chocolate com Morango'])">6 sabores disponíveis →</button>
+                        <div class="product-footer">
+                            <span class="price">R$ 200,00</span>
+                            <button class="btn-order" onclick="addToCart('Centos - Linha Clássica', 200.00)">+ Carrinho</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="images/cento-misto.jpg" alt="Centos - Misto" class="product-image" onclick="openLightbox('images/cento-misto.jpg', 'Centos - Misto')" style="width: 100%; height: 200px; object-fit: cover;">
+                        <h3>Centos - Misto</h3>
+                        <p class="product-description">100 brigadeiros com mistura de sabores clássicos e nobres.</p>
+                        <button class="flavor-btn" onclick="openFlavorModal(['Chocolate', 'Brigadeiro Branco', 'Brigadeiro de Champagne', 'Brigadeiro de Pistache', 'Chocolate com Avelã', 'Brigadeiro de Café Expresso'])">6 sabores disponíveis →</button>
+                        <div class="product-footer">
+                            <span class="price">R$ 265,00</span>
+                            <button class="btn-order" onclick="addToCart('Centos - Misto', 265.00)">+ Carrinho</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="images/centodocesfinos.jpg" alt="Centos - Doces Finos" class="product-image" onclick="openLightbox('images/centodocesfinos.jpg', 'Centos - Doces Finos')" style="width: 100%; height: 200px; object-fit: cover;">
+                        <h3>Centos - Doces Finos</h3>
+                        <p class="product-description">100 brigadeiros premium com ingredientes selecionados e acabamento de luxo.</p>
+                        <button class="flavor-btn" onclick="openFlavorModal(['Brigadeiro de Champagne', 'Brigadeiro de Pistache', 'Brigadeiro de Café Expresso', 'Brigadeiro de Frutas Vermelhas', 'Brigadeiro de Chocolate 70%', 'Brigadeiro de Trufa'])">6 sabores disponíveis →</button>
+                        <div class="product-footer">
+                            <span class="price">R$ 379,00</span>
+                            <button class="btn-order" onclick="addToCart('Centos - Doces Finos', 379.00)">+ Carrinho</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="images/cento-linha-nobre.jpg" alt="Centos - Linha Nobre" class="product-image" onclick="openLightbox('images/cento-linha-nobre.jpg', 'Centos - Linha Nobre')" style="width: 100%; height: 200px; object-fit: cover;">
+                        <h3>Centos - Linha Nobre</h3>
+                        <p class="product-description">100 brigadeiros da linha nobre, a escolha perfeita para impressionar.</p>
+                        <button class="flavor-btn" onclick="openFlavorModal(['Brigadeiro de Champagne', 'Brigadeiro de Pistache', 'Brigadeiro de Café Expresso', 'Brigadeiro de Frutas Vermelhas', 'Brigadeiro de Chocolate 70%', 'Brigadeiro de Trufa'])">6 sabores disponíveis →</button>
+                        <div class="product-footer">
+                            <span class="price">R$ 330,00</span>
+                            <button class="btn-order" onclick="addToCart('Centos - Linha Nobre', 330.00)">+ Carrinho</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tortas -->
+            <div id="tortas" class="tab-content">
+                <div class="products-grid">
+                    <div class="product-card">
+                        <img src="images/torta-de-limao-mereng.jpg" alt="Torta de Limão" class="product-image" onclick="openLightbox('images/torta-de-limao-mereng.jpg', 'Torta de Limão')" style="width: 100%; height: 200px; object-fit: cover;">
+                        <h3>Torta de Limão</h3>
+                        <p class="product-description">Torta refrescante com massa amanteigada, recheio cremoso de limão siciliano e cobertura de merengue.</p>
+                        <p class="product-note">Disponível apenas para pedidos agendados</p>
+                        <div class="product-footer">
+                            <span class="price">R$ 139,00</span>
+                            <button class="btn-order" onclick="addToCart('Torta de Limão', 139.00)">+ Carrinho</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="images/torta-choconinho.jpg" alt="Torta Choconinho" class="product-image" onclick="openLightbox('images/torta-choconinho.jpg', 'Torta Choconinho')" style="width: 100%; height: 200px; object-fit: cover;">
+                        <h3>Torta Choconinho</h3>
+                        <p class="product-description">Deliciosa combinação de chocolate belga com brigadeiro cremoso, finalizada com granulado de chocolate.</p>
+                        <p class="product-note">Disponível apenas para pedidos agendados</p>
+                        <div class="product-footer">
+                            <span class="price">R$ 169,00</span>
+                            <button class="btn-order" onclick="addToCart('Torta Choconinho', 169.00)">+ Carrinho</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="images/torta-aurora.jpg" alt="Torta Aurora" class="product-image" onclick="openLightbox('images/torta-aurora.jpg', 'Torta Aurora')" style="width: 100%; height: 200px; object-fit: cover;">
+                        <h3>Torta Aurora</h3>
+                        <p class="product-description">Torta sofisticada com camadas de chocolate branco e frutas vermelhas, um verdadeiro espetáculo visual.</p>
+                        <p class="product-note">Disponível apenas para pedidos agendados</p>
+                        <div class="product-footer">
+                            <span class="price">R$ 169,00</span>
+                            <button class="btn-order" onclick="addToCart('Torta Aurora', 169.00)">+ Carrinho</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="images/torta-banoffe.jpg" alt="Torta Banoffe" class="product-image" onclick="openLightbox('images/torta-banoffe.jpg', 'Torta Banoffe')" style="width: 100%; height: 200px; object-fit: cover;">
+                        <h3>Torta Banoffe</h3>
+                        <p class="product-description">Combinação irresistível de banana, doce de leite e chocolate, com cobertura de chantilly.</p>
+                        <p class="product-note">Disponível apenas para pedidos agendados</p>
+                        <div class="product-footer">
+                            <span class="price">R$ 169,00</span>
+                            <button class="btn-order" onclick="addToCart('Torta Banoffe', 169.00)">+ Carrinho</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="images/torta-chocofleur.jpg" alt="Torta Chocofleur" class="product-image" onclick="openLightbox('images/torta-chocofleur.jpg', 'Torta Chocofleur')" style="width: 100%; height: 200px; object-fit: cover;">
+                        <h3>Torta Chocofleur</h3>
+                        <p class="product-description">Nossa torta assinatura: chocolate belga, brigadeiro gourmet e um toque especial de café expresso.</p>
+                        <p class="product-note">Disponível apenas para pedidos agendados</p>
+                        <div class="product-footer">
+                            <span class="price">R$ 169,00</span>
+                            <button class="btn-order" onclick="addToCart('Torta Chocofleur', 169.00)">+ Carrinho</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="images/torta-cheesecake-de-morango.jpg" alt="Cheesecake de Morango" class="product-image" onclick="openLightbox('images/torta-cheesecake-de-morango.jpg', 'Cheesecake de Morango')" style="width: 100%; height: 200px; object-fit: cover;">
+                        <h3>Cheesecake de Morango</h3>
+                        <p class="product-description">Deliciosa cheesecake com recheio cremoso de cream cheese, finalizada com geleia de morango e morangos inteiros.</p>
+                        <p class="product-note">Disponível apenas para pedidos agendados</p>
+                        <div class="product-footer">
+                            <span class="price">R$ 169,00</span>
+                            <button class="btn-order" onclick="addToCart('Cheesecake de Morango', 169.00)">+ Carrinho</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="menu-note">Importante: Todos os produtos estão disponíveis apenas para pedidos agendados. Entre em contato conosco via WhatsApp.</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Sobre a Chocofleur</h2>
+                    <p>A Chocofleur Patisserie nasceu da paixão por criar doces sofisticados e memoráveis. Cada brigadeiro, cada torta é preparada com ingredientes premium e muito carinho.</p>
+                    <p>Acreditamos que os detalhes fazem a diferença. Por isso, utilizamos chocolates especiais, receitas exclusivas e técnicas refinadas para garantir que cada criação seja uma verdadeira obra de arte culinária.</p>
+                    <p>Nossos brigadeiros gourmet e tortas artesanais são perfeitos para celebrações especiais, eventos corporativos e momentos que merecem um toque de sofisticação.</p>
+                </div>
+                <div class="about-values">
+                    <div class="value-item">
+                        <span class="value-icon">✨</span>
+                        <h3>Qualidade</h3>
+                        <p>Ingredientes premium selecionados</p>
+                    </div>
+                    <div class="value-item">
+                        <span class="value-icon">🎨</span>
+                        <h3>Criatividade</h3>
+                        <p>Receitas exclusivas e inovadoras</p>
+                    </div>
+                    <div class="value-item">
+                        <span class="value-icon">❤️</span>
+                        <h3>Dedicação</h3>
+                        <p>Feito com amor e atenção</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Entre em Contato</h2>
+                <p>Estamos prontos para receber seu pedido e tornar sua celebração ainda mais doce</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h3>📱 WhatsApp</h3>
+                    <p class="contact-info">(69) 99927-8229</p>
+                    <button class="btn btn-primary" onclick="openWhatsApp()">Enviar Mensagem</button>
+                </div>
+
+                <div class="contact-card">
+                    <h3>📷 Instagram</h3>
+                    <p class="contact-info">@chocofleurbr</p>
+                    <a href="https://www.instagram.com/chocofleurbr/" target="_blank" class="btn btn-primary">Seguir</a>
+                </div>
+
+                <div class="contact-card">
+                    <h3>📍 Localização</h3>
+                    <p class="contact-info">Salgado Filho, 2044</p>
+                    <a href="https://www.google.com/maps/search/Salgado+Filho+2044" target="_blank" class="btn btn-primary">Ver no Mapa</a>
+                </div>
+
+                <div class="contact-card">
+                    <h3>⏰ Horário</h3>
+                    <p class="contact-info">11h às 20h</p>
+                    <p class="contact-note">Pedidos apenas por agendamento</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3>Chocofleur Patisserie</h3>
+                    <p>Brigadeiros gourmet e tortas artesanais sofisticadas.</p>
+                </div>
+                <div>
+                    <h4>Contato</h4>
+                    <p>(69) 99927-8229</p>
+                    <p>@chocofleurbr</p>
+                </div>
+                <div>
+                    <h4>Horário</h4>
+                    <p>11h às 20h</p>
+                    <p>Salgado Filho, 2044</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Chocofleur Patisserie. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+            <img id="lightboxImage" class="lightbox-image" src="" alt="Produto">
+            <div class="lightbox-title" id="lightboxTitle"></div>
+            <button class="lightbox-nav lightbox-prev" onclick="prevImage()" style="display: none;" id="prevBtn">&#10094;</button>
+            <button class="lightbox-nav lightbox-next" onclick="nextImage()" style="display: none;" id="nextBtn">&#10095;</button>
+            <div class="lightbox-counter" id="lightboxCounter" style="display: none;"></div>
+        </div>
+    </div>
+
+    <!-- Flavor Modal -->
+    <div id="flavorModal" class="modal">
+        <div class="modal-content modal-small">
+            <div class="modal-header">
+                <h2>Sabores Disponíveis</h2>
+                <button class="close-btn" onclick="closeFlavorModal()">&times;</button>
+            </div>
+            <div id="flavorsList" class="flavors-list"></div>
+        </div>
+    </div>
+
+    <script>
+        // ===== State =====
+        let selectedProduct = null;
+
+        // ===== Menu Tabs =====
+        function switchTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Show selected tab
+            const selectedTab = document.getElementById(tabName);
+            if (selectedTab) {
+                selectedTab.classList.add('active');
+            }
+
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+
+        // ===== Scroll to Menu =====
+        function scrollToMenu() {
+            const menuSection = document.getElementById('menu');
+            menuSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // ===== Product Selection =====
+        function selectProduct(productName, price) {
+            selectedProduct = {
+                name: productName,
+                price: price
+            };
+            openWhatsApp();
+        }
+
+        // ===== WhatsApp Integration =====
+        function openWhatsApp() {
+            const whatsappNumber = '5569999278229';
+            let message = 'Vim pelo link do atendente Yasmin';
+
+            if (selectedProduct) {
+                message += `. Gostaria de fazer um pedido do(a) ${selectedProduct.name} (R$ ${selectedProduct.price.toFixed(2)})`;
+            }
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+            selectedProduct = null;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // ===== Flavor Modal =====
+        function openFlavorModal(flavors) {
+            const modal = document.getElementById('flavorModal');
+            const flavorsList = document.getElementById('flavorsList');
+
+            // Clear previous flavors
+            flavorsList.innerHTML = '';
+
+            // Add flavors
+            flavors.forEach(flavor => {
+                const flavorItem = document.createElement('div');
+                flavorItem.className = 'flavor-item';
+                flavorItem.textContent = flavor;
+                flavorsList.appendChild(flavorItem);
+            });
+
+            modal.classList.add('active');
+        }
+
+        function closeFlavorModal() {
+            const modal = document.getElementById('flavorModal');
+            modal.classList.remove('active');
+        }
+
+        // ===== Modal Close on Outside Click =====
+        window.addEventListener('click', function(event) {
+            const flavorModal = document.getElementById('flavorModal');
+
+            if (event.target === flavorModal) {
+                closeFlavorModal();
+            }
+        });
+
+        // ===== Keyboard Shortcuts =====
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeFlavorModal();
+                closeLightbox();
+            }
+        });
+
+        // ===== Lightbox Functions =====
+        function openLightbox(imageSrc, title) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightboxImage');
+            const lightboxTitle = document.getElementById('lightboxTitle');
+
+            lightboxImage.src = imageSrc;
+            lightboxTitle.textContent = title;
+            lightbox.classList.add('active');
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+        }
+
+        function prevImage() {
+            console.log('Imagem anterior');
+        }
+
+        function nextImage() {
+            console.log('Proxima imagem');
+        }
+
+        // ===== Close Lightbox on Outside Click =====
+        window.addEventListener('click', function(event) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxContent = document.querySelector('.lightbox-content');
+
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // ===== Dark Mode Functions =====
+        function toggleTheme() {
+            const html = document.documentElement;
+            const isDarkMode = html.classList.contains('dark-mode');
+            const themeIcon = document.getElementById('themeIcon');
+            const themeText = document.getElementById('themeText');
+
+            if (isDarkMode) {
+                html.classList.remove('dark-mode');
+                localStorage.setItem('theme', 'light');
+                themeIcon.textContent = '🌙';
+                themeText.textContent = 'Modo Escuro';
+            } else {
+                html.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.textContent = '☀️';
+                themeText.textContent = 'Modo Claro';
+            }
+        }
+
+        // Load theme preference on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('themeIcon');
+            const themeText = document.getElementById('themeText');
+
+            if (savedTheme === 'dark') {
+                html.classList.add('dark-mode');
+                themeIcon.textContent = '☀️';
+                themeText.textContent = 'Modo Claro';
+            }
+
+            // Register Service Worker for PWA
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('./service-worker.js')
+                    .then((registration) => {
+                        console.log('Service Worker registrado com sucesso:', registration);
+                    })
+                    .catch((error) => {
+                        console.log('Erro ao registrar Service Worker:', error);
+                    });
+            }
+        });
+
+        // PWA Install Prompt
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            console.log('PWA pode ser instalado');
+        });
+
+        // ===== Shopping Cart Functions =====
+// ===== Shopping Cart Functions =====
+let cart = JSON.parse(localStorage.getItem('chocofleurCart')) || [];
+
+function addToCart(productName, price) {
+    const existingItem = cart.find(item => item.name === productName);
+    
+    if (existingItem) {
+        existingItem.quantity++;
+    } else {
+        cart.push({
+            name: productName,
+            price: price,
+            quantity: 1,
+            observation: ''
+        });
+    }
+    
+    saveCart();
+    updateCartUI();
+    showNotification(`${productName} adicionado ao carrinho!`);
+}
+
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    saveCart();
+    updateCartUI();
+}
+
+function updateQuantity(index, quantity) {
+    if (cart[index]) {
+        cart[index].quantity = Math.max(1, quantity);
+        saveCart();
+        updateCartUI();
+    }
+}
+
+function updateObservation(index, observation) {
+    if (cart[index]) {
+        cart[index].observation = observation;
+        saveCart();
+    }
+}
+
+function saveCart() {
+    localStorage.setItem('chocofleurCart', JSON.stringify(cart));
+}
+
+function updateCartUI() {
+    const cartCount = document.getElementById('cartCount');
+    const cartItems = document.getElementById('cartItems');
+    const cartTotal = document.getElementById('cartTotal');
+    
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    
+    // Atualizar contador
+    if (totalItems > 0) {
+        cartCount.textContent = totalItems;
+        cartCount.style.display = 'flex';
+    } else {
+        cartCount.style.display = 'none';
+    }
+    
+    // Atualizar total
+    cartTotal.textContent = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
+    
+    // Atualizar itens
+    if (cart.length === 0) {
+        cartItems.innerHTML = '<div class="cart-empty">Seu carrinho está vazio</div>';
+    } else {
+        cartItems.innerHTML = cart.map((item, index) => `
+            <div class="cart-item">
+                <div class="cart-item-info" style="width: 100%;">
+                    <div class="cart-item-name">${item.name}</div>
+                    <div class="cart-item-price">
+                        R$ ${item.price.toFixed(2).replace('.', ',')} x ${item.quantity} = 
+                        <strong>R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}</strong>
+                    </div>
+                    <div class="cart-item-controls" style="margin-top: 0.5rem;">
+                        <button class="cart-item-btn" onclick="updateQuantity(${index}, ${item.quantity - 1})">−</button>
+                        <div class="cart-item-qty">${item.quantity}</div>
+                        <button class="cart-item-btn" onclick="updateQuantity(${index}, ${item.quantity + 1})">+</button>
+                        <button class="cart-item-remove" onclick="removeFromCart(${index})">Remover</button>
+                    </div>
+                    <textarea class="cart-item-observation" placeholder="Adicione observações (ex: sem chocolate, com cobertura extra)" onchange="updateObservation(${index}, this.value)">${item.observation || ''}</textarea>
+                </div>
+            </div>
+        `).join('');
+    }
+}
+
+function toggleCart() {
+    const cartModal = document.getElementById('cartModal');
+    cartModal.classList.toggle('active');
+}
+
+function closeCart() {
+    const cartModal = document.getElementById('cartModal');
+    cartModal.classList.remove('active');
+}
+
+function checkoutCart() {
+    if (cart.length === 0) {
+        alert('Seu carrinho está vazio!');
+        return;
+    }
+    
+    const phoneNumber = '556999278229';
+    const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    
+    let message = 'Vim pelo link do atendente Yasmin - Gostaria de pedir:\n\n';
+    
+    cart.forEach((item, index) => {
+        message += `${index + 1}. ${item.quantity}x ${item.name} - R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}\n`;
+        if (item.observation) {
+            message += `   Observação: ${item.observation}\n`;
+        }
+    });
+    
+    message += `\nTOTAL: R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
+    
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    
+    window.open(whatsappUrl, '_blank');
+    
+    // Limpar carrinho após enviar
+    setTimeout(() => {
+        cart = [];
+        saveCart();
+        updateCartUI();
+        closeCart();
+    }, 1000);
+}
+
+function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.textContent = message;
+    notification.style.cssText = `
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        background-color: var(--accent);
+        color: var(--light);
+        padding: 1rem 1.5rem;
+        border-radius: 0.5rem;
+        z-index: 2000;
+        animation: slideIn 0.3s ease;
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => notification.remove(), 300);
+    }, 2000);
+}
+
+// Carregar carrinho ao iniciar
+window.addEventListener('DOMContentLoaded', function() {
+    updateCartUI();
+});
+
+// Fechar carrinho ao clicar fora
+window.addEventListener('click', function(event) {
+    const cartModal = document.getElementById('cartModal');
+    const cartButton = document.getElementById('cartButton');
+    
+    if (event.target === cartModal) {
+        closeCart();
+    }
+});
+
+    </script>
+</body>
+</html>
